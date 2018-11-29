@@ -9,8 +9,9 @@
     background-color: #f1f1f1;
     margin: 10px;
     text-align: center;
-    font-size: 14px;
-    padding: 25px 25px 25px 25px;
+    font-size: 15px;
+    padding: 15px;
+    font-size: 35px;
 }
 .key#space{
   width: 300px;
@@ -19,4 +20,21 @@
 html {
   background: url(https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX3385292.jpg);
   background-size: cover;
+  font-family: 'Sedgwick Ave', cursive;
+}
+
+.wrong-key-down{
+  border-radius: 100%;
+  background-color: #ff0000;
+}
+
+.correct-key-down{
+  border-radius: 100%;
+  background-color: #00ff22;
+}
+
+.fire-key{
+  border-radius: 100%;
+  background-color: #ff8800;
+
 }
