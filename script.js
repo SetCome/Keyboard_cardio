@@ -45,24 +45,46 @@ function endGame() {
     OffGame = true;
 };
 
+addClassToElement(clasName, element){
+    // do domu
+}
+
+removeClassToElement(clasName, element){
+    // net step
+}
+
+
+
+
+function showScore() {
+    menu =document.querySelector('.game-menu');
+    // console.log(menu);
+    menu.innerHTML = `<div class="scoreBoard">Score: ${score}</div>`;
+}
+
 function startGame() {
     score = 0;
     window.addEventListener('keydown', checkKey)
     peep();
     offGame = false;
+    scoreBoard = document.querySelector('scorBoard')
 };
 
 function checkKey(event){
     if (event.keyCode == currentkey.attributes[0].value) {
         score ++;
+        addClassToElement('.current-key-down', currentKey);
         console.log(score);
     } else {
         score --;
+        let key = document.querySelector(`<div[data-key="${e.keyCode}"]`);
+        addClassToElement('.wrong-key-down', wrongKey);
         console.log(score);
     }
+    scoreBoard.innerHTML = `Score: ${score}`;
     if (score == endScore) {
         endGame
     }
+   
 };
-
 
