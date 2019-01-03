@@ -24,7 +24,7 @@ function getRandomKey() {
 function peep() {
     const time = getRandomNumber(1000, 2000);
     const key = getRandomKey();
-    key.classList.add('fire-key');
+    key.classList.add('fire-key', key);
     currentKey = key;
     // console.log(currentKey.attributes[0].value)
     setTimeout(() => {
@@ -37,13 +37,13 @@ function endGame() {
     OffGame = true;
 };
 
-// addClassToElement(clasName, element) {
-//     // Homework 
-// }
+function addClassToElement(clasName, element) {
 
-// removeClassToElement(clasName, element) {
-//     // net step
-// }
+}
+
+function removeClassToElement(clasName, element) {
+
+ }
 
 
 function showScore() {
