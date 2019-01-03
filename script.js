@@ -1,14 +1,10 @@
-//napisz funkcje która generuje losowa liczbę (zwraca liczbę całkowitą), zwraca jak argumenty przyjmuje 
-//min (minimalna wartość) oraz max (maxymalna liczba do wygenerowania)
-
 const buttonsKey = document.getElementsByClassName('key');
 let lastKey;
-let OffGame = false;
-let currentkey;
+let currentKey;
 let score;
 let endScore = 2;
+let OffGame = false;
 
-console.log(currentkey.attributes[0].value)
 function getRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
@@ -25,18 +21,14 @@ function getRandomKey() {
 };
 
 
-console.log(getRandomKey())
-
-// do domu napisz funkcję która losowo dodaje do klawisza klasę fire-key
-
-function peep(){
+function peep() {
     const time = getRandomNumber(1000, 2000);
     const key = getRandomKey();
     key.classList.add('fire-key');
-    currentkey = key;
-    // console.log(currentkey.attributes[0].value)
+    currentKey = key;
+    // console.log(currentKey.attributes[0].value)
     setTimeout(() => {
-       key.classList.remove('fire-key')
+        key.classList.remove('fire-key');
         if (!OffGame) peep();
     }, time);
 };
@@ -45,46 +37,43 @@ function endGame() {
     OffGame = true;
 };
 
-addClassToElement(clasName, element){
-    // do domu
-}
+// addClassToElement(clasName, element) {
+//     // Homework 
+// }
 
-removeClassToElement(clasName, element){
-    // net step
-}
-
-
+// removeClassToElement(clasName, element) {
+//     // net step
+// }
 
 
 function showScore() {
-    menu =document.querySelector('.game-menu');
+    menu = document.querySelector('.game-menu');
     // console.log(menu);
-    menu.innerHTML = `<div class="scoreBoard">Score: ${score}</div>`;
+    menu.innerHTML = `<div class="scoreBoard">Score: ${score}</div>`; 
 }
 
 function startGame() {
     score = 0;
+    showScore();
     window.addEventListener('keydown', checkKey)
     peep();
-    offGame = false;
-    scoreBoard = document.querySelector('scorBoard')
+    OffGame = false;
+    scoreBoard = document.querySelector('.scoreBoard')
 };
 
-function checkKey(event){
-    if (event.keyCode == currentkey.attributes[0].value) {
+function checkKey(event) {
+    if (event.keyCode == currentKey.attributes[0].value) {
         score ++;
-        addClassToElement('.current-key-down', currentKey);
+        // addClassToElement('.correct-key-down', currentKey);
         console.log(score);
     } else {
         score --;
-        let key = document.querySelector(`<div[data-key="${e.keyCode}"]`);
-        addClassToElement('.wrong-key-down', wrongKey);
+        let wrongKey = document.querySelector(`div[data-key="${event.keyCode}"]`);
+        // addClassToElement('.wrong-key-down', wrongKey);
         console.log(score);
     }
     scoreBoard.innerHTML = `Score: ${score}`;
     if (score == endScore) {
-        endGame
+        endGame()
     }
-   
-};
-
+}
