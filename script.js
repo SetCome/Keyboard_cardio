@@ -28,7 +28,6 @@ function peep() {
     currentKey = key;
     // console.log(currentKey.attributes[0].value)
     setTimeout(() => {
-        key.classList.remove('fire-key');
         if (!OffGame) peep();
     }, time);
 };
@@ -39,11 +38,18 @@ function endGame() {
 
 function addClassToElement(className, element) {
 element.classList.add(className);
+const time = getRandomNumber(1000, 2000);
+setTimeout(() => {
+    removeClassFromElement(className, element);
+}, time);
 };
+
 
 function removeClassFromElement(className, element) {
     element.classList.remove(className);
  };
+
+ 
 
 
 function showScore() {
