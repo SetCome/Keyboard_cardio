@@ -24,7 +24,7 @@ function getRandomKey() {
 function peep() {
     const time = getRandomNumber(1000, 2000);
     const key = getRandomKey();
-    key.classList.add('fire-key', key);
+    addClassToElement('fire-key', key);
     currentKey = key;
     // console.log(currentKey.attributes[0].value)
     setTimeout(() => {
@@ -37,39 +37,40 @@ function endGame() {
     OffGame = true;
 };
 
-function addClassToElement(clasName, element) {
+function addClassToElement(className, element) {
+element.classList.add(className);
+};
 
-}
-
-function removeClassToElement(clasName, element) {
-
- }
+function removeClassFromElement(className, element) {
+    element.classList.remove(className);
+ };
 
 
 function showScore() {
     menu = document.querySelector('.game-menu');
-    // console.log(menu);
+    console.log(menu);
     menu.innerHTML = `<div class="scoreBoard">Score: ${score}</div>`; 
 }
 
 function startGame() {
     score = 0;
     showScore();
-    window.addEventListener('keydown', checkKey)
+    window.addEventListener('keydown', checkKey);
     peep();
     OffGame = false;
-    scoreBoard = document.querySelector('.scoreBoard')
+    scoreBoard = document.querySelector('.scoreBoard');
 };
 
 function checkKey(event) {
     if (event.keyCode == currentKey.attributes[0].value) {
         score ++;
-        // addClassToElement('.correct-key-down', currentKey);
+        removeClassFromElement('fire-key', currentKey);
+        addClassToElement('correct-key-down', currentKey);
         console.log(score);
     } else {
         score --;
         let wrongKey = document.querySelector(`div[data-key="${event.keyCode}"]`);
-        // addClassToElement('.wrong-key-down', wrongKey);
+        addClassToElement('wrong-key-down', wrongKey);
         console.log(score);
     }
     scoreBoard.innerHTML = `Score: ${score}`;
