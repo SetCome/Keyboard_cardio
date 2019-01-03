@@ -34,6 +34,8 @@ function peep() {
 
 function endGame() {
     OffGame = true;
+    window.removeEventListener('keydown', checkKey);
+    menu.innerHTML = `Victory! Your score: ${score} <button onclick="startGame()">Play again</button>`
 };
 
 function addClassToElement(className, element) {
